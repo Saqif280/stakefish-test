@@ -31,7 +31,7 @@ const ExchangesTable = ({ exchanges }) => {
       <Table striped bordered responsive>
         <thead>
           <tr>
-            <th>Rank</th>
+            <th>Trust Rank</th>
             <th>Exchange</th>
             <th>Country</th>
             <th>URL</th>
