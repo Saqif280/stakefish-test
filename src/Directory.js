@@ -3,6 +3,10 @@ import Button from 'react-bootstrap/Button';
 import CoinGeckoErrorAlert from './CoinGeckoErrorAlert';
 import ExchangesTable from './ExchangesTable';
 
+/**
+ * TODO: Add shimmer for when lastFetchedPage !== currentPage
+ * TODO: Consider adding current page to url params
+ */
 const Directory = () => {
   const [coingeckoRequestFailed, setCoingeckoRequestFailed] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -70,10 +74,6 @@ const Directory = () => {
       jumpToPageNumberInput.current.value = MAX_PAGE;
     }
   };
-
-  /**
-   * TODO: Add shimmer for when lastFetchedPage !== currentPage
-   */
 
   return (
     <>

@@ -2,16 +2,22 @@ import Table from 'react-bootstrap/Table';
 import PropTypes from 'prop-types';
 
 const ExchangesTable = ({ exchanges }) => {
+  const handleExchangeClick = (exchange_id) => {
+    window.location.href = `/exchange/${exchange_id}`;
+  };
+
   /**
    * TODO: Figure out why some urls are not rendering, like Kraken's
    */
-
   const renderTableRows = () => {
     return exchanges.map((exchange) => {
       return (
         <tr key={exchange.id}>
           <td>{exchange.trust_score_rank}</td>
-          <td>
+          <td
+            onClick={() => {
+              handleExchangeClick(exchange.id);
+            }}>
             <img src={exchange.image} />
             {exchange.name}
           </td>
