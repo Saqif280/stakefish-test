@@ -5,13 +5,10 @@ import './App.scss';
 
 const App = () => {
   return (
-    <>
-      <h1>Cryptocurrency Exchanges</h1>
-      <Routes>
-        <Route path="/" element={<Directory />} />
-        <Route path="exchange/:id" element={<ExchangePage />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Directory />} />
+      <Route path="exchange/:id" element={<ExchangePage />} />
+    </Routes>
   );
 };
 
