@@ -82,28 +82,24 @@ const Directory = () => {
       {exchanges && (
         <>
           <ExchangesTable exchanges={exchanges} />
-          <>
-            <Button variant="light" onClick={handlePageBack} disabled={!canGoPageBack}>
-              Previous Page
-            </Button>
-            Page {currentPage}
-            <Button variant="light" onClick={handlePageForward} disabled={!canGoPageForward}>
-              Next Page
-            </Button>
-          </>
-          <>
-            Jump to Page{' '}
-            <input
-              ref={jumpToPageNumberInput}
-              type="number"
-              min={MIN_PAGE}
-              max={MAX_PAGE}
-              onBlur={correctJumpToPageValue}
-            />
-            <Button variant="light" onClick={setCurrentPageToInput}>
-              Go
-            </Button>
-          </>
+          <Button variant="light" onClick={handlePageBack} disabled={!canGoPageBack}>
+            Previous Page
+          </Button>
+          Page {currentPage} / {MAX_PAGE + ' '}
+          <Button variant="light" onClick={handlePageForward} disabled={!canGoPageForward}>
+            Next Page
+          </Button>
+          Jump to Page{' '}
+          <input
+            ref={jumpToPageNumberInput}
+            type="number"
+            min={MIN_PAGE}
+            max={MAX_PAGE}
+            onBlur={correctJumpToPageValue}
+          />
+          <Button variant="light" onClick={setCurrentPageToInput}>
+            Go
+          </Button>
         </>
       )}
     </>
