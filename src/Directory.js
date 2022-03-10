@@ -52,8 +52,8 @@ const Directory = () => {
   };
 
   const setCurrentPageToInput = () => {
-    const pageToJumpTo = jumpToPageNumberInput.current.value;
-    if (pageToJumpTo < MIN_PAGE) {
+    const pageToJumpTo = parseInt(jumpToPageNumberInput.current.value);
+    if (isNaN(pageToJumpTo) || pageToJumpTo < MIN_PAGE) {
       setCurrentPage(MIN_PAGE);
     } else if (pageToJumpTo >= MAX_PAGE) {
       setCurrentPage(MAX_PAGE);
@@ -67,8 +67,8 @@ const Directory = () => {
    * correct that value to the closest acceptable value
    */
   const correctJumpToPageValue = () => {
-    const pageToJumpTo = jumpToPageNumberInput.current.value;
-    if (pageToJumpTo < MIN_PAGE) {
+    const pageToJumpTo = parseInt(jumpToPageNumberInput.current.value);
+    if (isNaN(pageToJumpTo) || pageToJumpTo < MIN_PAGE) {
       jumpToPageNumberInput.current.value = MIN_PAGE;
     } else if (pageToJumpTo >= MAX_PAGE) {
       jumpToPageNumberInput.current.value = MAX_PAGE;
