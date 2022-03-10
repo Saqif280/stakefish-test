@@ -85,7 +85,7 @@ const Directory = () => {
           <Button variant="light" onClick={handlePageBack} disabled={!canGoPageBack}>
             Previous Page
           </Button>
-          Page {currentPage} / {MAX_PAGE + ' '}
+          <span>{`Page ${currentPage} / ${MAX_PAGE} `}</span>
           <Button variant="light" onClick={handlePageForward} disabled={!canGoPageForward}>
             Next Page
           </Button>
@@ -96,6 +96,7 @@ const Directory = () => {
             min={MIN_PAGE}
             max={MAX_PAGE}
             onBlur={correctJumpToPageValue}
+            data-testid="page-input"
           />
           <Button variant="light" onClick={setCurrentPageToInput}>
             Go
