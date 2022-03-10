@@ -2,7 +2,7 @@ import Alert from 'react-bootstrap/Alert';
 
 const CoinGeckoErrorAlert = () => {
   return (
-    <Alert variant="danger">
+    <Alert variant="danger" data-testid="coingecko-error-alert">
       Hmm ... we can&apos;t reach&nbsp;
       <Alert.Link href="https://www.coingecko.com/" target="_blank">
         CoinGecko

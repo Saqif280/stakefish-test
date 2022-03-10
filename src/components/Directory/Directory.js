@@ -76,7 +76,7 @@ const Directory = () => {
   };
 
   return (
-    <>
+    <div data-testid="directory">
       <h1>Cryptocurrency Exchanges</h1>
       {coingeckoRequestFailed && <CoinGeckoErrorAlert />}
       {exchanges && (
@@ -102,7 +102,7 @@ const Directory = () => {
           </Button>
         </>
       )}
-    </>
+    </div>
   );
 };
 

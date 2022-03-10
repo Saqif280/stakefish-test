@@ -28,7 +28,7 @@ const ExchangePage = () => {
   });
 
   return (
-    <>
+    <div data-testid="exchange-page">
       <Link to="/">Back to Exchanges List</Link>
       <div>
         {coingeckoRequestFailed && <CoinGeckoErrorAlert />}
@@ -118,7 +118,7 @@ const ExchangePage = () => {
           </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
