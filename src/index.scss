@@ -1,0 +1,122 @@
+$white: #FFF;
+$primary: #F9FAFC;
+$secondary: #1F2D3D;
+$accent: #FF5216;
+$grey-1: #3C4858;
+
+@mixin box-shadow() {
+  box-shadow: 0 0 3rem 0 rgba(0, 0, 0, 0.03), 0 0 0 transparent;
+  -moz-box-shadow: 0 0 3rem 0 rgba(0, 0, 0, 0.03), 0 0 0 transparent;
+  -webkit-box-shadow: 0 0 3rem 0 rgba(0, 0, 0, 0.03), 0 0 0 transparent;
+}
+
+html {
+  background-color: $primary;
+}
+body {
+  background-color: $primary;
+  font-family: 'Open Sans', sans-serif;
+  color: $grey-1;
+}
+h1 {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 200;
+  color: $white;
+  margin-bottom: 30px;
+}
+table {
+  width: 100%;
+  img {
+    width: 20px;
+    margin-right: 10px;
+  }
+}
+th {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  color: $accent;
+  font-weight: 700;
+  font-size: 12px;
+}
+td {
+  padding: 10px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // normalize cell width
+  max-width: 1px;
+}
+tr:nth-child(even) {
+  background-color: $primary;
+}
+.bg-shape {
+  z-index: 1;
+  background-color: $secondary;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 45%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+.content {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 1000px;
+  padding: 40px 40px;
+}
+.footer {
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+}
+.exchanges-table-with-navigation {
+  background-color: $white;
+  padding: 30px 40px;
+  @include box-shadow();
+}
+.exchange-target {
+  cursor: pointer;
+}
+.exchanges-table-navigation {
+  text-align: center;
+  margin-top: 30px;
+  .back-forth-navigation {
+    margin-bottom: 10px;
+    margin-right: 30px;
+    .page-count {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
+  .input-navigation {
+    white-space: pre;
+  }
+}
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  th {
+    padding: 10px 10px;
+  }
+  td {
+    padding: 10px 10px;
+  }
+  .content {
+    padding: 10px 10px;
+  }
+  .exchanges-table-with-navigation {
+    padding: 20px 4px;
+  }
+}

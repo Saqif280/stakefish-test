@@ -58,8 +58,8 @@ test('handles page navigation through next and back buttons', async () => {
     </BrowserRouter>
   );
   await waitFor(() => screen.getByText('Page 1 / 40'));
-  const previousButton = screen.getByText('Previous Page');
-  const nextButton = screen.getByText('Next Page');
+  const previousButton = screen.getByTestId('back-page-button');
+  const nextButton = screen.getByTestId('next-page-button');
   // test forward
   userEvent.click(nextButton);
   expect(screen.getByText('Page 2 / 40')).toBeInTheDocument();

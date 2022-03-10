@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
+import { FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa';
 import CoinGeckoErrorAlert from '../CoinGeckoErrorAlert';
 import ExchangesTable from './ExchangesTable';
 
@@ -25,10 +26,11 @@ const Directory = () => {
         .then((response) => {
           if (response.status !== 200) {
             setCoingeckoRequestFailed(true);
+          } else {
+            setLastFetchedPage(currentPage);
+            setTotalExchanges(response.headers.get('total'));
+            return response.json();
           }
-          setLastFetchedPage(currentPage);
-          setTotalExchanges(response.headers.get('total'));
-          return response.json();
         })
         .then((data) => {
           setExchanges(data);
@@ -77,31 +79,45 @@ const Directory = () => {
 
   return (
     <div data-testid="directory">
-      <h1>Cryptocurrency Exchanges</h1>
+      <h1>Crypto Exchange Directory</h1>
       {coingeckoRequestFailed && <CoinGeckoErrorAlert />}
       {exchanges && (
-        <>
+        <div className="exchanges-table-with-navigation">
           <ExchangesTable exchanges={exchanges} />
-          <Button variant="light" onClick={handlePageBack} disabled={!canGoPageBack}>
-            Previous Page
-          </Button>
-          <span>{`Page ${currentPage} / ${MAX_PAGE} `}</span>
-          <Button variant="light" onClick={handlePageForward} disabled={!canGoPageForward}>
-            Next Page
-          </Button>
-          Jump to Page{' '}
-          <input
-            ref={jumpToPageNumberInput}
-            type="number"
-            min={MIN_PAGE}
-            max={MAX_PAGE}
-            onBlur={correctJumpToPageValue}
-            data-testid="page-input"
-          />
-          <Button variant="light" onClick={setCurrentPageToInput}>
-            Go
-          </Button>
-        </>
+          <div className="exchanges-table-navigation">
+            <span className="back-forth-navigation">
+              <Button
+                variant="link"
+                onClick={handlePageBack}
+                disabled={!canGoPageBack}
+                data-testid="back-page-button">
+                <FaChevronCircleLeft />
+              </Button>
+              <span className="page-count">{`Page ${currentPage} / ${MAX_PAGE} `}</span>
+              <Button
+                variant="link"
+                onClick={handlePageForward}
+                disabled={!canGoPageForward}
+                data-testid="next-page-button">
+                <FaChevronCircleRight />
+              </Button>
+            </span>
+            <span className="input-navigation">
+              Jump to Page{' '}
+              <input
+                ref={jumpToPageNumberInput}
+                type="number"
+                min={MIN_PAGE}
+                max={MAX_PAGE}
+                onBlur={correctJumpToPageValue}
+                data-testid="page-input"
+              />
+              <Button variant="light" onClick={setCurrentPageToInput}>
+                Go
+              </Button>
+            </span>
+          </div>
+        </div>
       )}
     </div>
   );

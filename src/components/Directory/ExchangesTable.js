@@ -1,5 +1,5 @@
-import Table from 'react-bootstrap/Table';
 import PropTypes from 'prop-types';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const ExchangesTable = ({ exchanges }) => {
   const handleExchangeClick = (exchange_id) => {
@@ -13,19 +13,22 @@ const ExchangesTable = ({ exchanges }) => {
     return exchanges.map((exchange) => {
       return (
         <tr key={exchange.id}>
-          <td>{exchange.trust_score_rank}</td>
+          <td>{exchange.trust_score_rank ? exchange.trust_score_rank : '?'}</td>
           <td
+            className="exchange-target"
             onClick={() => {
               handleExchangeClick(exchange.id);
             }}>
             <img src={exchange.image} alt={`${exchange.name} logo`} />
             {exchange.name}
           </td>
-          <td>{exchange.country}</td>
+          <td>{exchange.country ? exchange.country : 'Unknown'}</td>
           <td>
-            <a href={exchange.url} target="_blank" rel="noreferrer">
-              {exchange.url}
-            </a>
+            {exchange.url && (
+              <a href={exchange.url} target="_blank" rel="noreferrer">
+                <FaExternalLinkAlt />
+              </a>
+            )}
           </td>
         </tr>
       );
@@ -33,18 +36,18 @@ const ExchangesTable = ({ exchanges }) => {
   };
 
   return (
-    <div data-testid="exchanges-table">
-      <Table striped bordered responsive>
+    <div className="exchanges-table" data-testid="exchanges-table">
+      <table>
         <thead>
           <tr>
-            <th>Trust Rank</th>
+            <th>Rank</th>
             <th>Exchange</th>
             <th>Country</th>
-            <th>URL</th>
+            <th>Website</th>
           </tr>
         </thead>
         <tbody>{renderTableRows()}</tbody>
-      </Table>
+      </table>
     </div>
   );
 };
