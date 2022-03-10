@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import CoinGeckoErrorAlert from '../CoinGeckoErrorAlert';
+import CoinGeckoErrorAlert from '../';
 
 test('renders CoinGeckoErrorAlert', () => {
   render(<CoinGeckoErrorAlert />);

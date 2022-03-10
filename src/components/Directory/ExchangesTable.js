@@ -33,7 +33,7 @@ const ExchangesTable = ({ exchanges }) => {
   };
 
   return (
-    <>
+    <div data-testid="exchanges-table">
       <Table striped bordered responsive>
         <thead>
           <tr>
@@ -45,7 +45,7 @@ const ExchangesTable = ({ exchanges }) => {
         </thead>
         <tbody>{renderTableRows()}</tbody>
       </Table>
-    </>
+    </div>
   );
 };
 
