@@ -8,6 +8,13 @@ import ExchangesTable from './ExchangesTable';
  * TODO: Add shimmer for when lastFetchedPage !== currentPage
  * TODO: Consider adding current page to url params
  */
+
+/**
+ * The Directory component attempts to make an API call to coingecko to get a paginated
+ * list of exchanges with some details. Navigation between pages and the related API calls
+ * are made in this component. The table of information is rendered by ExchangesTable. If
+ * the API call fails, CoinGeckoErrorAlert is rendered.
+ */
 const Directory = () => {
   const [coingeckoRequestFailed, setCoingeckoRequestFailed] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);

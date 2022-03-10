@@ -1,5 +1,9 @@
 import Alert from 'react-bootstrap/Alert';
 
+/**
+ * The CoinGeckoErrorAlert component is a static component that renders an alert to the
+ * user warning them that the CoinGecko API request failed.
+ */
 const CoinGeckoErrorAlert = () => {
   return (
     <Alert variant="danger" data-testid="coingecko-error-alert">

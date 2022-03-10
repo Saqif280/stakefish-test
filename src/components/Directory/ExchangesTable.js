@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
+/**
+ * The ExchangesTable component takes in a list of exchanges and their data and renders an
+ * HTML table. If an exchange is clicked, it routes the browser to the exchange page.
+ */
 const ExchangesTable = ({ exchanges }) => {
   const handleExchangeClick = (exchange_id) => {
     window.location.href = `/exchange/${exchange_id}`;

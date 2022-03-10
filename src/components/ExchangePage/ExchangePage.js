@@ -6,6 +6,12 @@ import CoinGeckoErrorAlert from '../CoinGeckoErrorAlert';
 /**
  * TODO: Add shimmer for when exchangeInfo is undefined
  */
+
+/**
+ * The ExchangePage component attempts to make an API call to coingecko to get details on
+ * the selected exchange. The data is rendered to the user if available. If the API call
+ * fails, CoinGeckoErrorAlert is rendered.
+ */
 const ExchangePage = () => {
   const [coingeckoRequestFailed, setCoingeckoRequestFailed] = useState(false);
   const [exchangeInfo, setExchangeInfo] = useState();
