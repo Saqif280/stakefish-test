@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { FaChevronLeft } from 'react-icons/fa';
 import CoinGeckoErrorAlert from '../CoinGeckoErrorAlert';
 
 /**
@@ -28,94 +29,97 @@ const ExchangePage = () => {
 
   return (
     <div data-testid="exchange-page">
-      <Link to="/">Back to Exchanges List</Link>
+      <Link to="/" className="back-link">
+        <FaChevronLeft /> Back to Exchanges List
+      </Link>
       <div>
         {coingeckoRequestFailed && <CoinGeckoErrorAlert />}
         {exchangeInfo && (
-          <div data-testid="exchange-info">
+          <div className="exchange-info" data-testid="exchange-info">
+            {exchangeInfo.trust_score_rank && (
+              <span className="rank">Ranked #{exchangeInfo.trust_score_rank}</span>
+            )}
             {exchangeInfo.image && (
               <img src={exchangeInfo.image} alt={`${exchangeInfo.name} logo`} />
             )}
-            {exchangeInfo.name && <h1>{exchangeInfo.name}</h1>}
-            {exchangeInfo.country && <p>Country: {exchangeInfo.country}</p>}
-            {exchangeInfo.trust_score_rank && (
-              <p>Trust Score Rank: {exchangeInfo.trust_score_rank}</p>
-            )}
-            {exchangeInfo.year_established && (
-              <p>Year Established: {exchangeInfo.year_established}</p>
-            )}
-            {exchangeInfo.description && <p>Description: {exchangeInfo.description}</p>}
-            {exchangeInfo.twitter_handle && (
-              <p>
-                <a href={exchangeInfo.url} target="_blank" rel="noreferrer">
-                  Website
-                </a>
-              </p>
-            )}
-            {exchangeInfo.twitter_handle && (
-              <p>
-                <a
-                  href={`https://www.facebook.com/${exchangeInfo.facebook_url}`}
-                  target="_blank"
-                  rel="noreferrer">
-                  Facebook
-                </a>
-              </p>
-            )}
-            {exchangeInfo.twitter_handle && (
-              <p>
-                <a
-                  href={`https://www.twitter.com/${exchangeInfo.twitter_handle}`}
-                  target="_blank"
-                  rel="noreferrer">
-                  Twitter
-                </a>
-              </p>
-            )}
-            {exchangeInfo.reddit_url && (
-              <p>
-                <a
-                  href={`https://www.reddit.com/${exchangeInfo.reddit_url}`}
-                  target="_blank"
-                  rel="noreferrer">
-                  Reddit
-                </a>
-              </p>
-            )}
-            {exchangeInfo.telegram_url && (
-              <p>
-                <a
-                  href={`https://www.t.me/${exchangeInfo.telegram_url}`}
-                  target="_blank"
-                  rel="noreferrer">
-                  Telegram
-                </a>
-              </p>
-            )}
-            {exchangeInfo.slack_url && (
-              <p>
-                <a
-                  href={`https://www.slack.com/${exchangeInfo.slack_url}`}
-                  target="_blank"
-                  rel="noreferrer">
-                  Slack
-                </a>
-              </p>
-            )}
-            {exchangeInfo.other_url_1 && (
-              <p>
-                <a href={exchangeInfo.other_url_1} target="_blank" rel="noreferrer">
-                  Additional Link 1
-                </a>
-              </p>
-            )}
-            {exchangeInfo.other_url_2 && (
-              <p>
-                <a href={exchangeInfo.other_url_2} target="_blank" rel="noreferrer">
-                  Additional Link 2
-                </a>
-              </p>
-            )}
+            {exchangeInfo.name && <h2>{exchangeInfo.name}</h2>}
+            {exchangeInfo.country && <p>Based in {exchangeInfo.country}</p>}
+            {exchangeInfo.year_established && <p>Established in {exchangeInfo.year_established}</p>}
+            {exchangeInfo.description && <p>{exchangeInfo.description}</p>}
+            <p className="social-links">
+              Social Links:{' '}
+              {exchangeInfo.twitter_handle && (
+                <span>
+                  <a href={exchangeInfo.url} target="_blank" rel="noreferrer">
+                    Website
+                  </a>
+                </span>
+              )}
+              {exchangeInfo.twitter_handle && (
+                <span>
+                  <a
+                    href={`https://www.facebook.com/${exchangeInfo.facebook_url}`}
+                    target="_blank"
+                    rel="noreferrer">
+                    Facebook
+                  </a>
+                </span>
+              )}
+              {exchangeInfo.twitter_handle && (
+                <span>
+                  <a
+                    href={`https://www.twitter.com/${exchangeInfo.twitter_handle}`}
+                    target="_blank"
+                    rel="noreferrer">
+                    Twitter
+                  </a>
+                </span>
+              )}
+              {exchangeInfo.reddit_url && (
+                <span>
+                  <a
+                    href={`https://www.reddit.com/${exchangeInfo.reddit_url}`}
+                    target="_blank"
+                    rel="noreferrer">
+                    Reddit
+                  </a>
+                </span>
+              )}
+              {exchangeInfo.telegram_url && (
+                <span>
+                  <a
+                    href={`https://www.t.me/${exchangeInfo.telegram_url}`}
+                    target="_blank"
+                    rel="noreferrer">
+                    Telegram
+                  </a>
+                </span>
+              )}
+              {exchangeInfo.slack_url && (
+                <span>
+                  <a
+                    href={`https://www.slack.com/${exchangeInfo.slack_url}`}
+                    target="_blank"
+                    rel="noreferrer">
+                    Slack
+                  </a>
+                </span>
+              )}
+              {exchangeInfo.other_url_1 && (
+                <span>
+                  <a href={exchangeInfo.other_url_1} target="_blank" rel="noreferrer">
+                    Additional Link 1
+                  </a>
+                </span>
+              )}
+              {exchangeInfo.other_url_2 && (
+                <span>
+                  <a href={exchangeInfo.other_url_2} target="_blank" rel="noreferrer">
+                    Additional Link 2
+                  </a>
+                </span>
+              )}
+            </p>
           </div>
         )}
       </div>

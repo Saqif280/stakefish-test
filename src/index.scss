@@ -25,6 +25,13 @@ h1 {
   color: $white;
   margin-bottom: 30px;
 }
+h2 {
+  font-size: 36px;
+  font-weight: 200;
+  color: $secondary;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 table {
   width: 100%;
   img {
@@ -53,7 +60,7 @@ tr:nth-child(even) {
 .bg-shape {
   z-index: 1;
   background-color: $secondary;
-  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 45%);
+  clip-path: polygon(0 0, 100% 0, 100% 25%, 0 35%);
   position: absolute;
   top: 0;
   left: 0;
@@ -78,10 +85,39 @@ tr:nth-child(even) {
   text-align: center;
   font-size: 12px;
 }
-.exchanges-table-with-navigation {
+.exchanges-table-with-navigation, .exchange-info {
   background-color: $white;
   padding: 30px 40px;
   @include box-shadow();
+}
+.exchange-info{
+  margin-top: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  .rank {
+    float: right;
+    top: 20px;
+    right: 20px;
+  }
+  .social-links {
+    span:after {
+      content: ', ';
+    }
+    span:last-child:after {
+      content: '';
+    }
+  }
+}
+a {
+  transition: 300ms all;
+  &.back-link{
+    text-decoration: none;
+    color: $white;
+    &:hover {
+      color: darken($white, 10%);
+    }
+  }
 }
 .exchange-target {
   cursor: pointer;

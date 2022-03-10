@@ -8,7 +8,7 @@ import exchangeData from '../../../utils/exchangeDummyData';
 const API_URL = 'https://api.coingecko.com/api/v3/exchanges';
 const server = setupServer(
   rest.get(API_URL, (req, res, ctx) => {
-    return res(ctx.json(exchangeData));
+    return res(ctx.json(exchangeData), ctx.status(200));
   })
 );
 
@@ -38,7 +38,7 @@ test('handles API data and renders in UI', async () => {
 test('handles server error', async () => {
   server.use(
     rest.get(API_URL, (req, res, ctx) => {
-      return res(ctx.status(500));
+      return res(ctx.json({}), ctx.status(200));
     })
   );
 
