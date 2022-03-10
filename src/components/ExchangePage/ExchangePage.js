@@ -22,7 +22,6 @@ const ExchangePage = () => {
         })
         .then((data) => {
           setExchangeInfo(data);
-          console.log(data.slack_url);
         });
     }
   });
@@ -33,8 +32,10 @@ const ExchangePage = () => {
       <div>
         {coingeckoRequestFailed && <CoinGeckoErrorAlert />}
         {exchangeInfo && (
-          <>
-            {exchangeInfo.image && <img src={exchangeInfo.image} />}
+          <div data-testid="exchange-info">
+            {exchangeInfo.image && (
+              <img src={exchangeInfo.image} alt={`${exchangeInfo.name} logo`} />
+            )}
             {exchangeInfo.name && <h1>{exchangeInfo.name}</h1>}
             {exchangeInfo.country && <p>Country: {exchangeInfo.country}</p>}
             {exchangeInfo.trust_score_rank && (
@@ -115,7 +116,7 @@ const ExchangePage = () => {
                 </a>
               </p>
             )}
-          </>
+          </div>
         )}
       </div>
     </div>

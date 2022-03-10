@@ -18,7 +18,7 @@ const ExchangesTable = ({ exchanges }) => {
             onClick={() => {
               handleExchangeClick(exchange.id);
             }}>
-            <img src={exchange.image} />
+            <img src={exchange.image} alt={`${exchange.name} logo`} />
             {exchange.name}
           </td>
           <td>{exchange.country}</td>
