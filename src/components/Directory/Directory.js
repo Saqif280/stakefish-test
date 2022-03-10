@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
-import CoinGeckoErrorAlert from './CoinGeckoErrorAlert';
+import CoinGeckoErrorAlert from '../CoinGeckoErrorAlert';
 import ExchangesTable from './ExchangesTable';
 
 /**

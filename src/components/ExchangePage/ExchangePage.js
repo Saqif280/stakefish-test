@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import CoinGeckoErrorAlert from './CoinGeckoErrorAlert';
+import CoinGeckoErrorAlert from '../CoinGeckoErrorAlert';
 
 /**
  * TODO: Add shimmer for when exchangeInfo is undefined
